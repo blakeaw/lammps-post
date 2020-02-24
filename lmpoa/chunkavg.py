@@ -76,12 +76,19 @@ class ChunkAvg(object):
                         frames.append(chunkframe)
         return frames
 
-    def block_average(self, block_size, start=0):
+    def block_average(self, block_size, start=0, end=-1):
         blocks = list()
         nframes = len(self.frames)
-        for i in range(start, nframes, block_size):
+        if end == -1:
+            end = nframes
+        if end > nframes:
+            end = nframes
+        for i in range(start, end, block_size):
+            #print(i)
             bavg = self.frames[i]().loc[:,'Coord1':]
             for j in range(i+1, i+block_size-1):
+                if j > end-1:
+                    break
                 bavg = bavg + self.frames[j]().loc[:,'Coord1':]
             bavg = bavg/block_size
             blocks.append(bavg)
@@ -92,23 +99,30 @@ class ChunkAvg(object):
         avg = avg/nblocks
         return avg, blocks
 
-    def chunk_densities(self):
+    def radial_chunk_densities(self):
         for i in range(len(self.frames)):
             chunk_df = self.frames[i]()
-            cd = self.chunk_density(chunk_df)
+            cd = self.radial_chunk_density(chunk_df)
             self.frames[i].chunks_df = chunk_df.assign(density=cd)
         return
 
-    def chunk_volumes(self):
+    def radial_chunk_volumes(self):
         for i in range(len(self.frames)):
             chunk_df = self.frames[i]()
-            cd = self.chunk_volume(chunk_df)
+            cd = self.radial_chunk_volume(chunk_df)
             self.frames[i].chunks_df = chunk_df.assign(volume=cd)
-        return        
+        return
 
+    def remove_empty_chunks(self, ncount_threshold=0):
+        for i in range(len(self.frames)):
+            chunk_df = self.frames[i]()
+            is_gz = chunk_df['Ncount'] > ncount_threshold
+            chunk_df_gz  = chunk_df[is_gz]
+            self.frames[i].chunks_df = chunk_df_gz.reset_index()
+        return
 
     @staticmethod
-    def chunk_density(chunk_df):
+    def radial_chunk_density(chunk_df):
         bw = chunk_df['Coord1'][1] - chunk_df['Coord1'][0]
         hbw = bw/2.
         starts = chunk_df['Coord1'][:] - hbw
@@ -120,8 +134,8 @@ class ChunkAvg(object):
         return density.values
 
     @staticmethod
-    def chunk_volume(chunk_df):
-        bw = chunk_df['Coord1'][1] - chunk_df['Coord1'][0]
+    def radial_chunk_volume(chunk_df):
+        bw = chunk_df['Coord1'].values[1] - chunk_df['Coord1'].values[0]
         hbw = bw/2.
         starts = chunk_df['Coord1'][:] - hbw
         ends = chunk_df['Coord1'][:] + hbw
