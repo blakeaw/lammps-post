@@ -9,10 +9,7 @@ setuptools.setup(
     python_requires=">=3.9",
     install_requires=[
         "numpy",
-        "pands",
-        "os",
-        "builtins",
-        "__feature__",
+        "pandas"
     ],
     author="Blake A. Wilson",
     author_email="blake.wilson@utdallas.edu",
