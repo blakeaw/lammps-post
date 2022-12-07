@@ -104,7 +104,7 @@ class ChunkAvg(object):
             end = nframes
         if end > nframes:
             end = nframes
-        print((end - start) / block_size)
+        # print((end - start) / block_size)
         for i in range(start, end, block_size):
             # print(i)
             bavg = self.frames[i]().loc[:, "Coord1":]
