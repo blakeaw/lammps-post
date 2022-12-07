@@ -5,12 +5,9 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="lammps_output_analysis",
-    version="0.1.0",
+    version="0.2.0",
     python_requires=">=3.9",
-    install_requires=[
-        "numpy",
-        "pandas"
-    ],
+    install_requires=["numpy", "pandas"],
     author="Blake A. Wilson",
     author_email="blake.wilson@utdallas.edu",
     description="Python tools to parse, post-process, and analyze outputs from LAMMPS commands.",
