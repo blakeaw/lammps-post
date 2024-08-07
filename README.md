@@ -1,2 +1,3 @@
-# lammps_output_analysis
-Python tools to parse, post-process, and analyze outputs from LAMMPS commands.
+# LAMMPS Post
+
+Python tools to parse, post-process, and analyze outputs from LAMMPS molecular dynamics simulations.
