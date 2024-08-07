@@ -1,0 +1,56 @@
+[build-system]
+requires = ["setuptools >= 61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "lammps-post"
+dynamic = ["version"]
+requires-python = ">= 3.9"
+dependencies = [
+  "numpy",
+  "pandas",
+]
+authors = [
+  {name = "Blake A. Wilson", email = "blakeawilson.phd@gmail.com"},
+]
+description = "Python tool to parse, post-process, and analyze outputs from LAMMPS molecular dynamics simulations."
+readme = "README.md"
+keywords = ["lammps", "molecular dynamics", "analysis", "molecular simulation"]
+classifiers = [
+  # How mature is this project? Common values are
+  #   3 - Alpha
+  #   4 - Beta
+  #   5 - Production/Stable
+  "Development Status :: 3 - Alpha",
+
+  # Indicate who your project is intended for
+  "Intended Audience :: LAMMPS Users",
+  "Topic :: Molecular Simulation :: Analysis",
+
+  # Pick your license as you wish (see also "license" above)
+  "License :: OSI Approved :: MIT",
+
+  # Specify the Python versions you support here.
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+]
+
+[project.urls]
+Repository = "https://github.com/blakeaw/lammps-post"
+Issues = "https://github.com/blakeaw/lammps-post/issues"
+Changelog = "https://github.com/blakeaw/lammps-post/CHANGELOG.md"
+
+# Find namespace package
+[tool.setuptools.packages.find]
+where = ["./"]
+include = ["lmp_post",
+           "lmp_post.thermoutput",
+           "lmp_post.chunkavg",
+           ]
+namespaces = false
+
+# Set the dynamic version
+[tool.setuptools.dynamic]
+version = {attr = "lmp_post.__version__"}
