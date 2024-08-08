@@ -7,7 +7,7 @@
 [![license](https://img.shields.io/github/license/blakeaw/lammps-post.svg)](LICENSE)
 ![version](https://img.shields.io/badge/version-0.1.0-orange.svg)
 [![release](https://img.shields.io/github/release-pre/blakeaw/lammps-post.svg)](https://github.com/blakeaw/lammps-post/releases/tag/v0.1.0)
-
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
 **`lammps-post` facilitates Python-based analysis of thermodynamic and chunk averaging outputs from LAMMPS molecular dynamics simulations.** 
 
