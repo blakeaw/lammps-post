@@ -5,10 +5,10 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "lammps-post"
 dynamic = ["version"]
-requires-python = ">= 3.9"
+requires-python = ">= 3.12.4"
 dependencies = [
-  "numpy",
-  "pandas",
+  "numpy>=1.26.4",
+  "pandas>=2.2.2",
 ]
 authors = [
   {name = "Blake A. Wilson", email = "blakeawilson.phd@gmail.com"},
@@ -32,9 +32,7 @@ classifiers = [
 
   # Specify the Python versions you support here.
   "Programming Language :: Python :: 3",
-  "Programming Language :: Python :: 3.9",
-  "Programming Language :: Python :: 3.10",
-  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
 ]
 
 [project.urls]
