@@ -4,7 +4,7 @@
 
 ![Python version badge](https://img.shields.io/badge/python-3.12.4-blue.svg)
 [![LAMMPS badge](https://img.shields.io/badge/LAMMPS-23Jun2022-darkblue.svg)](https://www.lammps.org/)
-[![license](https://img.shields.io/github/license/blakeaw/lammps-post.svg)](LICENSE)
+[![license](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 ![version](https://img.shields.io/badge/version-0.1.0-orange.svg)
 [![release](https://img.shields.io/github/release-pre/blakeaw/lammps-post.svg)](https://github.com/blakeaw/lammps-post/releases/tag/v0.1.0)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
