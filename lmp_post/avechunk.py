@@ -240,10 +240,10 @@ class AveChunk(object):
 
         Adds a new \'pressure\' column to the DataFrame for each time point/frame.
 
-        Pressure is computed using 
+        Pressure is computed using
             p = -(c_id[1] + c_id[2] + c_id[3])/(3*volume)
         and corresponds to the average per atom pressure in that chunk (averaged over all
-        atoms in the chunk). 
+        atoms in the chunk).
 
         The bin3d_chunk_volumes function must be called before this one in order to
         compute the volume of each bin.
@@ -266,7 +266,7 @@ class AveChunk(object):
         """Removes empty chunks, or those with atom counts lower than a threshold.
 
         Args:
-            ncount_threshold (int, optional): The threshold value for the 
+            ncount_threshold (int, optional): The threshold value for the
             atom count in a chunk. Defaults to 0.
         """
         for i in range(len(self.frames)):
