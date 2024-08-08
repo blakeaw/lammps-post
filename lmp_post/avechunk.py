@@ -1,5 +1,4 @@
-"""Analysis of LAMMPS chunk/avg output
-Define a objects to handle analysis of LAMMPS chunk/avg outputs.
+"""Objects to handle analysis of LAMMPS fix ave/chunk outputs.
 """
 
 # imports
@@ -29,8 +28,8 @@ class ChunkFrame(object):
         self.chunks_df = pd.DataFrame(chunks_dict)
 
 
-class ChunkAvg(object):
-    """Parse, load, and analyze data from fix chunk/avg outputs."""
+class AveChunk(object):
+    """Load, parse, and analyze data from a file with fix ave/chunk outputs."""
 
     _int_cols = list(["Chunk", "OrigID"])
 
