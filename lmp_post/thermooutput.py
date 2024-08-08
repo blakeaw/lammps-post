@@ -11,15 +11,24 @@ import numpy as np
 import pandas as pd
 import os
 
+
 class ThermoOut(object):
-    """Parse, load, and analyze data from fix thermo command outputs.
-    """
-    _int_cols = ['Step']
-    def __init__(self, filepath, run_number=0):
+    """Parse, load, and analyze data from fix thermo command outputs."""
+
+    _int_cols = ["Step"]
+
+    def __init__(self, filepath: str, run_number: int = 0):
+        """Initialize the ThermoOut object with filepath and run_number to load.
+
+        Args:
+            filepath (str): Path and name of the output file (e.g., log.lammps) to be
+                be loaded.
+            run_number (int, optional): Index of the run for files containing data
+                from multiple sequential runs in the same input script. Defaults to 0.
+        """
         self.fp = os.path.abspath(filepath)
         self.run_number = run_number
         self.data = self._parse()
-
 
     def _parse(self):
         data = dict()
@@ -28,7 +37,7 @@ class ThermoOut(object):
         # Line after thermo out is Loop time ...
         column_names = list()
         i_run = 0
-        with open(self.fp, 'r') as f:
+        with open(self.fp, "r") as f:
             n_line = 0
             pre = True
             nameline = True
@@ -38,7 +47,7 @@ class ThermoOut(object):
                     words = line.split()
                     if len(words) < 2:
                         pass
-                    elif (words[0] == 'Per') and (words[1] == 'MPI'):
+                    elif (words[0] == "Per") and (words[1] == "MPI"):
                         if i_run == self.run_number:
                             pre = False
                         else:
@@ -52,12 +61,12 @@ class ThermoOut(object):
                         for cn in column_names:
                             data[cn] = list()
                         nameline = False
-                elif (not post):
+                elif not post:
                     words = line.split()
-                    if (words[0] == 'Loop') and (words[1] == 'time'):
+                    if (words[0] == "Loop") and (words[1] == "time"):
                         post = True
                         break
-                    for j,word in enumerate(words):
+                    for j, word in enumerate(words):
                         cname = column_names[j]
                         if cname in self._int_cols:
                             data[column_names[j]].append(int(word))
